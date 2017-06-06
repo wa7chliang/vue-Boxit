@@ -1,23 +1,24 @@
 <template>
     <div id="bpp">
         <div class="bpp">
-            <h2>第一关</h2>        
+            <h2>第二关</h2>        
             <ul>
                 <li v-for="(li,index) in box" :class="li.class"></li>
             </ul>
         </div>
     </div>
 </template>
+
 <script>
     export default({
-        name:'bpp',
+        name:"level2",
         data(){
             return {
                 box:[],
-                wall:[2,3,4,10,12,18,20,21,22,23,24,25,26,31,32,37,38,39,40,41,42,43,45,51,53,59,60,61],
-                success:[11,33,30,52],
-                boxli:[27,29,35,44],
-                me:[36],
+                wall:[0,1,2,3,4,9,13,18,22,24,25,26,27,31,33,35,36,37,38,40,41,42,44,46,47,53,55,59,62,64,68,69,70,71,73,74,75,76,77],
+                success:[34,43,52],
+                boxli:[20,29,39],
+                me:[30],
                 white:{class:'white'},
                 gray:{class:'gray'},
                 blue:{class:'blue'},
@@ -28,15 +29,15 @@
         methods:{
             render(){
                 this.box = [];
-                for(var i = 0;i<64;i++){
+                for(var i=0;i<81;i++){
                     if(this.wall.indexOf(i)!=-1){
                         this.box.push(this.gray);
+                    }else if(this.me.indexOf(i)!=-1){
+                        this.box.push(this.green);
                     }else if(this.boxli.indexOf(i)!=-1){
                         this.box.push(this.yellow);
                     }else if(this.success.indexOf(i)!=-1){
                         this.box.push(this.blue);
-                    }else if(this.me.indexOf(i)!=-1){
-                        this.box.push(this.green);
                     }else{
                         this.box.push(this.white);
                     }
@@ -61,12 +62,11 @@
             //判断胜利
             win(){
                 var num = 0;
-                for(var i=0;i<4;i++){
+                for(var i=0;i<3;i++){
                     if(this.success.indexOf(this.boxli[i])!=-1){
                         num++;
-                        if(num == 4){
+                        if(num == 3){
                             alert('游戏胜利');
-                            this.$router.push({path:'/level2'});
                         }
                     }else{
                         break;
@@ -75,13 +75,13 @@
             },
             //键盘上键的方法
             upGo(){
-                this.testWall(-8);
+                this.testWall(-9);
                 this.render();
                 this.win();
             },
             //键盘下键的方法
             downGo(){
-                this.testWall(8);
+                this.testWall(9);
                 this.render();
                 this.win();                
             },
@@ -97,23 +97,23 @@
                 this.render();
                 this.win();                
             }
-       },
-       created(){
-           this.render();
-           let that = this;
-           //使用全局键盘事件
-           document.onkeyup = function($event){
-               if($event.keyCode==38){
+        },
+        created(){
+            this.render();
+            let that = this;
+            //使用全局键盘事件
+            document.onkeyup = function($event){
+                if($event.keyCode==38){
                     that.upGo();
-               }else if($event.keyCode==40){
-                   that.downGo();
-               }else if($event.keyCode==37){
-                   that.leftGo();
-               }else if($event.keyCode==39){
-                   that.rightGo();
-               }
-           };
-       }
+                }else if($event.keyCode==40){
+                    that.downGo();
+                }else if($event.keyCode==37){
+                    that.leftGo();
+                }else if($event.keyCode==39){
+                    that.rightGo();
+                }
+            };
+        }
     })
 </script>
 
@@ -131,8 +131,8 @@
         margin-bottom: 20px;
     }
     ul{
-        width: 240px;
-        height: 240px;
+        width: 270px;
+        height: 270px;
     }
     li{
       list-style: none;
