@@ -1,7 +1,7 @@
 <template>
     <div id="bpp">
         <div class="bpp">
-            <h2>第二关</h2>        
+            <h2>第三关</h2>        
             <ul>
                 <li v-for="(li,index) in box" :class="li.class"></li>
             </ul>
@@ -11,14 +11,14 @@
 
 <script>
     export default({
-        name:"level2",
+        name:'level3',
         data(){
-            return {
+            return{
                 box:[],
-                wall:[0,1,2,3,4,9,13,18,22,24,25,26,27,31,33,35,36,37,38,40,41,42,44,46,47,53,55,59,62,64,68,69,70,71,73,74,75,76,77],
-                success:[34,43,52],
-                boxli:[20,29,39],
-                me:[30],
+                wall:[1,2,3,4,5,6,7,11,17,18,19,20,21,23,24,25,29,30,39,40,44,48,49,50,51,54,58,61,62,63,64,65,66,67,68],
+                success:[42,43,52,53],
+                me:[33],
+                boxli:[22,34,37,46],
                 white:{class:'white'},
                 gray:{class:'gray'},
                 blue:{class:'blue'},
@@ -29,7 +29,7 @@
         methods:{
             render(){
                 this.box = [];
-                for(var i=0;i<81;i++){
+                for(var i=0;i<70;i++){
                     if(this.wall.indexOf(i)!=-1){
                         this.box.push(this.gray);
                     }else if(this.me.indexOf(i)!=-1){
@@ -67,7 +67,6 @@
                         num++;
                         if(num == 3){
                             alert('游戏胜利');
-                            this.$router.push({path:'/level3'});
                         }
                     }else{
                         break;
@@ -76,13 +75,13 @@
             },
             //键盘上键的方法
             upGo(){
-                this.testWall(-9);
+                this.testWall(-10);
                 this.render();
                 this.win();
             },
             //键盘下键的方法
             downGo(){
-                this.testWall(9);
+                this.testWall(10);
                 this.render();
                 this.win();                
             },
@@ -115,7 +114,7 @@
                 }
             };
         }
-    })
+    });
 </script>
 
 <style>
@@ -132,8 +131,8 @@
         margin-bottom: 20px;
     }
     ul{
-        width: 270px;
-        height: 270px;
+        width: 300px;
+        height: 210px;
     }
     li{
       list-style: none;
