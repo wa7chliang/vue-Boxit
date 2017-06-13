@@ -18,6 +18,7 @@
                 success:[11,33,30,52],
                 boxli:[27,29,35,44],
                 me:[36],
+                game:64,
                 white:{class:'white'},
                 gray:{class:'gray'},
                 blue:{class:'blue'},
@@ -28,7 +29,7 @@
         methods:{
             render(){
                 this.box = [];
-                for(var i = 0;i<64;i++){
+                for(var i = 0;i<this.game;i++){
                     if(this.wall.indexOf(i)!=-1){
                         this.box.push(this.gray);
                     }else if(this.boxli.indexOf(i)!=-1){
@@ -66,7 +67,8 @@
                         num++;
                         if(num == 4){
                             alert('游戏胜利');
-                            this.$router.push({path:'/level2'});
+                            //使用没有历史记录的跳转,防止后退地图混乱                          
+                            this.$router.replace({path:'/level2'});                            
                         }
                     }else{
                         break;

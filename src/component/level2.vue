@@ -67,7 +67,7 @@
                         num++;
                         if(num == 3){
                             alert('游戏胜利');
-                            this.$router.push({path:'/level3'});
+                            this.$router.replace({path:'/level3'});
                         }
                     }else{
                         break;
