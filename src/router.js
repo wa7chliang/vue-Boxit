@@ -7,21 +7,21 @@ import level3 from './component/level3.vue'
 Vue.use(Router);
 
 export default new Router({
-    routes:[
-        {
-            path:'/',
-            name:'bpp',
-            component:bpp
-        },
-        {
-            path:'/level2',
-            name:'level2',
-            component:level2
-        },
-        {
-            path:'/level3',
-            name:'level3',
-            component:level3
-        }
-    ]
+  routes: [
+    {
+      path: '/',
+      name: 'bpp',
+      component: bpp
+    },
+    {
+      path: '/level2',
+      name: 'level2',
+      component: level2
+    },
+    {
+      path: '/level3',
+      name: 'level3',
+      component: level3
+    }
+  ]
 })

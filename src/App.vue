@@ -1,13 +1,18 @@
 <template>
-  <div id="app">
-      <router-view></router-view>
-  </div>
+    <div id="app">
+        <tips></tips>
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  import tips from './component/tips.vue'
+  export default {
+    name: 'app',
+    components: {
+      tips
+    }
+  }
 </script>
 
 <style>
